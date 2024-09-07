@@ -1,15 +1,21 @@
 
 // Downscales .cbz files
+// TODO:
+// -rename file to zip
+// -unzip
 
 #include <iostream>
 #include <fstream>
 #include <cstdio>
+#include <filesystem>
 
 int main(int argc, char *argv[]) {
-    std::string filePath = argv[1];
-    std::ofstream cbz(filePath);
-    std::cout << "File: " + filePath + "\n";
-    system("pause");
+    //std::string fileStr = argv[1];
+    std::filesystem::path filePath = argv[1];
+    //std::ofstream cbz(filePath);
+    //std::cout << "File: " + filePath + "\n";
+    filePath.replace_extension(".zip");
+    //system("pause");
 
     // i have no idea what i'm doing ToT
 /*     std::string fileNameShort = fileName;
