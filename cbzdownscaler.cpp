@@ -1,24 +1,27 @@
 
 // Downscales .cbz files
 // TODO:
-// -rename file to zip
 // -unzip
 
-#include <iostream>
-#include <fstream>
 #include <cstdio>
+#include <iostream>
 
 int main(int argc, char *argv[]) {
     // take command line arguments
     std::string filePath = argv[1];
+    std::string fileName = filePath;
+    fileName.erase(fileName.length() - 4, 4);
     std::string desiredWidthString = argv[2];
     std::string desiredHeightString = argv[3];
-    
-    // convert 
+
+    // convert
     int desiredWidth, desiredHeight;
     desiredWidth = std::stoi(desiredWidthString);
     desiredHeight = std::stoi(desiredHeightString);
-    
+
+    // rename .cbz to .zip
+    std::rename(filePath.c_str(), fileName.append(".zip").c_str());
+
     // testing
     std::cout << filePath << "\n" << desiredWidth<< "\n" << desiredHeight;
     return 0;
